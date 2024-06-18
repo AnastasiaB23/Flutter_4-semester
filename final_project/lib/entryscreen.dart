@@ -1,16 +1,23 @@
-
-
-import 'dart:math';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:practice6/screens/todo_preview_screen.dart';
 
-import 'main.dart';
-import 'screens/to_do_screen.dart';
 import 'screens/first_screen.dart';
 
-import 'screens/third_screen.dart';
+
+// class EntryScreenModel with ChangeNotifier {
+//   Widget _currentWidgetIndex = StartMenu();
+//
+//   Widget get currentWidgetIndex => _currentWidgetIndex;
+//
+//   void changeWidget(Widget index) {
+//     _currentWidgetIndex = index;
+//     notifyListeners();
+//   }
+// }
+
 
 SizedBox _sizedBoxBetween({double height = 10}){
   return SizedBox(
@@ -46,10 +53,59 @@ TextStyle _textStyle(){
   );
 }
 
+
+// // Вторичный экран
+// class SecondaryScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Вторичный экран"),
+//       ),
+//       body: ChangeNotifierProvider(
+//         create: (context) => SecondaryScreenModel(),
+//         child: Consumer<SecondaryScreenModel>(
+//           builder: (context, model, child) {
+//             return Column(
+//               children: [
+//                 // Кнопки для переключения виджетов
+//                 Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                   children: [
+//                     ElevatedButton(
+//                       onPressed: () => model.changeWidget(0),
+//                       child: Text("Виджет 1"),
+//                     ),
+//                     ElevatedButton(
+//                       onPressed: () => model.changeWidget(1),
+//                       child: Text("Виджет 2"),
+//                     ),
+//                   ],
+//                 ),
+//                 // Вывод выбранного виджета
+//                 Expanded(
+//                   child: IndexedStack(
+//                     index: model.currentWidgetIndex,
+//                     children: [
+//                       Widget1(),
+//                       Widget2(),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             );
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
 class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return entryScreen();
+
+      // body: startMenu(),
       // appBar: AppBar(
       //   title: Text('Мой путь',
       //   style: TextStyle(
@@ -58,10 +114,90 @@ class _EntryScreenState extends State<EntryScreen> {
       //   ),
       //   ),
       // ),
+      // body: ChangeNotifierProvider(
+      //   create: (context) => EntryScreenModel(),
+      //   child: Consumer<EntryScreenModel>(
+      //     builder: (context, model, child) {
+      //       return model._currentWidgetIndex;
+              // Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              // children: [
+              //   Text('Погнали!',
+              //     style: _textStyle(),),
+              //   // Кнопки для переключения виджетов
+              //   // Row(
+              //   //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   //   children: [
+              //   ElevatedButton(
+              //     onPressed: () => model.changeWidget(1),
+              //     child: Text("Начать"),
+              //   ),
+              //   ElevatedButton(
+              //     onPressed: () => model.changeWidget(2),
+              //     child: Text("Настройки"),
+              //   ),
+                // ],
+                // ),
+                // Вывод выбранного виджета
+                // Expanded(
+                //   child: IndexedStack(
+                //     index: model.currentWidgetIndex,
+                //     children: [
+                //       startMenu(),
+                //       entryScreen(),
+                //       settingsMenu(),
+                //     ],
+                //   ),
+                // ),
+            //   ],
+            // );
+      //     },
+      //   ),
+      // ),
+      // ChangeNotifierProvider(
+      //   create: (context) => EntryScreenModel(),
+      //   child: Consumer<EntryScreenModel>(
+      //     builder: (context, model, child) {
+      //       return Column(
+      //         children: [
+      //           // Кнопки для переключения виджетов
+      //           Row(
+      //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //             children: [
+      //               ElevatedButton(
+      //                 onPressed: () => model.changeWidget(0),
+      //                 child: Text("Виджет 1"),
+      //               ),
+      //               ElevatedButton(
+      //                 onPressed: () => model.changeWidget(1),
+      //                 child: Text("Виджет 2"),
+      //               ),
+      //             ],
+      //           ),
+      //           // Вывод выбранного виджета
+      //           Expanded(
+      //             child: IndexedStack(
+      //               index: model.currentWidgetIndex,
+      //               children: [
+      //                 startMenu(),
+      //                 entryScreen(),
+      //                 settingsMenu(),
+      //               ],
+      //             ),
+      //           ),
+      //         ],
+      //       );
+      //     },
+      //   ),
+      // ),
+    // );
+  }
+
+  Widget entryScreen (){
+    return Scaffold(
       body: Center(
-        child:ListView(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
+      child:ListView(
+        children: <Widget>[
           Container(
               color: Colors.lightBlue.shade100,
               width: 2000,
@@ -132,10 +268,84 @@ class _EntryScreenState extends State<EntryScreen> {
                 )
             ),
           ),
-      ],
-          ),
-        ),
-      );
+        ],
+      ),
+      ),
+    );
   }
 
+  // Widget settingsMenu(){
+  //   return
+  //     Text('settings');
+  // }
+
+
+    // return Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //
+    //     Text('Погнали!',
+    //     style: _textStyle(),),
+    //     ElevatedButton(
+    //       onPressed: () => model.changeWidget(0),
+    //       child: Text("Виджет 1"),
+    //     ),
+    //     ElevatedButton(
+    //       onPressed: () => model.changeWidget(1),
+    //       child: Text("Виджет 2"),
+    //     ),
+
+
+  //     ],
+  //   );
+  // }
 }
+
+// class StartMenu extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context){
+//     return Text('старт');
+//   }
+// }
+// Widget startMenu(){
+//   return Text('старт');
+//   // return ChangeNotifierProvider(
+//   //   create: (context) => EntryScreenModel(),
+//   //   child: Consumer<EntryScreenModel>(
+//   //     builder: (context, model, child) {
+//   //       return Column(
+//   //         mainAxisAlignment: MainAxisAlignment.center,
+//   //         children: [
+//   //           Text('Погнали!',
+//   //           style: _textStyle(),),
+//   //           // Кнопки для переключения виджетов
+//   //           // Row(
+//   //           //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+//   //           //   children: [
+//   //               ElevatedButton(
+//   //                 onPressed: () => model.changeWidget(1),
+//   //                 child: Text("Начать"),
+//   //               ),
+//   //               ElevatedButton(
+//   //                 onPressed: () => model.changeWidget(2),
+//   //                 child: Text("Настройки"),
+//   //               ),
+//   //             // ],
+//   //           // ),
+//   //           // Вывод выбранного виджета
+//   //           Expanded(
+//   //             child: IndexedStack(
+//   //               index: model.currentWidgetIndex,
+//   //               children: [
+//   //                 startMenu(),
+//   //                 entryScreen(),
+//   //                 settingsMenu(),
+//   //               ],
+//   //             ),
+//   //           ),
+//   //         ],
+//   //       );
+//   //     },
+//   //   ),
+//   // );
+// }

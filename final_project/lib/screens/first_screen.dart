@@ -15,7 +15,7 @@ class MyGoals extends StatefulWidget {
 class _MyGoalsState extends State<MyGoals>
 {
   final _textEditingController = TextEditingController();
-  String _enteredName = '';
+  // String _enteredName = '';
   List<String>_titles=['Пример'];
 
   @override
@@ -54,11 +54,12 @@ class _MyGoalsState extends State<MyGoals>
         ),
         trailing: Icon(Icons.arrow_forward_ios),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ToDoScreen(id: 0)),
-            //   CHANGE!
-          );
+            textFields();
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => textFields()),
+          //   //   CHANGE!
+          // );
         },
         onLongPress: () {
             _deleteGoal(_titles.indexOf(item));
@@ -167,6 +168,8 @@ class _MyGoalsState extends State<MyGoals>
     });
   }
 
+
+
   // ListTile _addGoals(){
   //   return ListTile(
   //       title: Text(_enteredName),
@@ -209,6 +212,21 @@ class _MyGoalsState extends State<MyGoals>
   //       }
   //   );
   // }
+
+  Widget textFields(){
+    return SingleChildScrollView(
+      child:
+        (
+        Container(
+          child:
+          TextField(),
+        )
+        ),
+    );
+  }
+
+
+//   управление состоянием экранов, смена виджетов с использованием одного Scaffold!!!!!!!!!
 
 }
 
